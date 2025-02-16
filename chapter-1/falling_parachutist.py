@@ -17,9 +17,8 @@ c := drag coefficient
 g = 9.8 #m/s^2
 m = 68.1 #kg
 c = 12.5 #kg/s 
-step = 2 #s
 
-def v_gen():
+def v_gen(step):
     vi = 0
     vf = g*step
     v_list = []
@@ -31,12 +30,26 @@ def v_gen():
         temp_vi = vf
     return vf, v_list
 
-v_t, v_list = v_gen()
-t = [2*i for i in range(len(v_list))]
+v1_t, v1_list = v_gen(2)
+t1 = [2*i for i in range(len(v1_list))]
+
+v2_t, v2_list = v_gen(10)
+t2 = [2*i for i in range(len(v2_list))]
+
+v3_t, v3_list = v_gen(1)
+t3 = [2*i for i in range(len(v3_list))]
+
+v4_t, v4_list = v_gen(0.5)
+print(len(v4_list))
+t4 = [2*i for i in range(len(v4_list))]
 
 plt.xlabel("Time t")
 plt.ylabel("Velocity v(t)")
-plt.text(45, 50, f"Terminal velocity: {v_t:.2f}")
-plt.plot(t, v_list)
+plt.plot(t1, v1_list, 'green', label=f"2s: TV = {v1_t:.2f}")
+plt.plot(t2, v2_list, 'orange', label=f"10s: TV = {v2_t:.2f}")
+plt.plot(t3, v3_list, 'red', label=f"1s: TV = {v3_t:.2f}")
+plt.plot(t4, v4_list, 'blue', label=f"0.5s: TV = {v4_t:.2f}")
+plt.legend()
 plt.savefig("v_plot.png")
 plt.show()
+
