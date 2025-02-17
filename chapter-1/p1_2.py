@@ -50,6 +50,5 @@ plt.plot(t2, v2_list, 'orange', label=f"10s: TV = {v2_t:.2f}")
 plt.plot(t3, v3_list, 'red', label=f"1s: TV = {v3_t:.2f}")
 plt.plot(t4, v4_list, 'blue', label=f"0.5s: TV = {v4_t:.2f}")
 plt.legend()
-plt.savefig("v_plot.png")
-plt.show()
+plt.savefig("p1_2.png")
 
