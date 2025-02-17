@@ -35,6 +35,8 @@ for index, v in enumerate(v2_list):
         v2_index = index
         break
 print(v2_index, v2_list[v2_index], v_target)
+plt.xlabel("Time t")
+plt.ylabel("Velocity v(t)")
 plt.plot([i for i in range(len(v1_list))], v1_list, 'green', label='70kg, 12kg/s drag')
 plt.plot([i for i in range(len(v2_list))], v2_list, 'red', label='75kg, 15kg/s drag')
 plt.legend()
