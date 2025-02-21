@@ -20,3 +20,22 @@ a step size of (\delta t) = 0.1. The concentration at t=0 is 10 Bq/L.
 (b) Plot the solution on a semilon graph (i.e. ln c versus t) and determine the slope.
 Interpret your results.
 """
+
+def decay(c0, k, end, step): 
+    times = [0]
+    concentrations = [c0]
+    while times[-1] < end:
+        t_i = times[-1]
+        c_i = concentrations[-1]
+        concentrations.append(c_i - k*c_i*step)
+        times.append(t_i + step)
+    return times, concentrations
+
+t, c = decay(10, 0.2, 1, 0.1)
+
+plt.xlabel("Time (t)")
+plt.ylabel("Concentration ln(c)")
+plt.semilogy(t, c, 'green')
+plt.savefig('p1_7.png')
+plt.show()
+        

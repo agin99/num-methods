@@ -19,3 +19,19 @@ step size of 0.5 d. The parameter values are A = 1200 m^{2} and
 Q = 500 m^{3}/d. Assume that the initial condition is y = 0. 
 """
 
+def tank_depth(A, Q, end, step):
+    times = [0]
+    y_depths = [0]
+    while times[-1] < end:
+        y_i = y_depths[-1]
+        y_f = (3 * Q / A * np.sin(times[-1])**2  - Q / A) * step + y_i
+        y_depths.append(float(y_f))
+        times.append(times[-1] + step)
+    return times, y_depths
+
+times, y_depths = tank_depth(1200, 500, 10, 0.5)
+plt.xlabel('Time (t)')
+plt.ylabel('Depth Relative to Half Full (y(t))')
+plt.plot(times, y_depths)
+plt.savefig('p1_9.png')
+plt.show()
